@@ -93,7 +93,6 @@ function formatReviewMessage(
       message += `• ${rec}\n`;
     });
   }
-  
   return message;
 }
 
