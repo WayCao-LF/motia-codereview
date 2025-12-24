@@ -76,20 +76,16 @@ function formatReviewMessage(
   
   if (hasIssues) {
     message += `*发现 ${issuesCount} 个问题:*\n`;
-    reviewResult.issues.slice(0, 5).forEach((issue: any, index: number) => {
+    reviewResult.issues.forEach((issue: any, index: number) => {
       message += `${index + 1}. ${issue.type || '问题'}: ${issue.message || issue}\n`;
     });
-    
-    if (issuesCount > 5) {
-      message += `... 还有 ${issuesCount - 5} 个问题\n`;
-    }
   } else {
     message += `✅ 未发现明显问题\n`;
   }
   
   if (reviewResult.recommendations?.length > 0) {
     message += `\n*建议:*\n`;
-    reviewResult.recommendations.slice(0, 3).forEach((rec: string, index: number) => {
+    reviewResult.recommendations.forEach((rec: string) => {
       message += `• ${rec}\n`;
     });
   }
