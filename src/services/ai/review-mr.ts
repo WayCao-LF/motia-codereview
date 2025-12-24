@@ -39,17 +39,16 @@ export async function reviewMR(input: ReviewMRInput): Promise<ReviewResult> {
   const systemPrompt = `你是一个专业的代码审查助手。你需要根据以下编程规范审查代码：${codingStandard}
 请使用中文来返回 review 结果，不要使用英文。除非代码中的专有名词是英文，否则请使用中文。
 给出的建议 尽量简单清晰可读 不要太啰嗦 不要出现类似 "你可以考虑" 这样的词语
-请重点关注：
+请以下2点即可 重点关注：
 1. 代码规范和风格问题
 2. 潜在的逻辑错误
-3. 最佳实践违背
 
 请以 JSON 格式返回审查结果，格式如下：
 {
   "summary": "整体评价摘要",
   "issues": [
     {
-      "type": "代码规范|逻辑错误|最佳实践",
+      "type": "代码规范|逻辑错误",
       "severity": "high|medium|low",
       "file": "文件路径",
       "message": "问题描述",
