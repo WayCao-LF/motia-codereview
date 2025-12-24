@@ -2,7 +2,6 @@ interface SlackNotificationInput {
   reviewId: string;
   mrUrl: string;
   mrTitle: string;
-  message: string;
   reviewResult: any;
 }
 
@@ -47,7 +46,7 @@ export async function sendSlackNotification(input: SlackNotificationInput) {
   if (reviewResult.recommendations && reviewResult.recommendations.length > 0) {
     reviewContent += `━━━━━━━━━━━━━━━━━━━━\n\n`;
     reviewContent += `💡 *改进建议:*\n`;
-    reviewResult.recommendations.slice(0, 3).forEach((rec: string, index: number) => {
+    reviewResult.recommendations.forEach((rec: string, index: number) => {
       reviewContent += `${index + 1}. ${rec}\n`;
     });
   }
